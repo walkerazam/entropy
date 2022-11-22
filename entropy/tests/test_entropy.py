@@ -2,20 +2,23 @@
 Tests for the entropy function
 """
 
-import numpy as np
 import unittest
+
+import numpy as np
 
 from entropy import entropy
 
 
 class TestEntropy(unittest.TestCase):
+    """
+    This class manages the tests for the entropy set of funcitons.
+    """
 
     def test_smoke(self):
         """
         Simple smoke test to make sure function runs.
         """
         entropy([1])
-        return
 
     def test_args_dont_sum_to_1(self):
         """
@@ -24,7 +27,6 @@ class TestEntropy(unittest.TestCase):
         """
         with self.assertRaises(ValueError):
             entropy([.9, .9])
-        return
 
     def test_args_out_of_range(self):
         """
@@ -33,7 +35,6 @@ class TestEntropy(unittest.TestCase):
         """
         with self.assertRaises(ValueError):
             entropy([-1, 2])
-        return
 
     def test_four_equal_likelihood_states(self):
         """
@@ -41,20 +42,17 @@ class TestEntropy(unittest.TestCase):
         equal likelihood of occurrence. Should return 2 bits.
         """
         assert np.isclose(entropy([0.25, 0.25, 0.25, 0.25]), 2.)
-        return
 
     def test_equal_probability(self):
         """
         Pattern test using the known relationship of equal probabilities
         and predefined result.
         """
-        def test(count):
+        def test(n):
             prob = 1.0/n
             ps = np.repeat(prob, n)
             assert np.isclose(entropy(ps), -np.log2(prob))
-            return
 
         # run the test for a large number of iterations
         for n in range(10, 100000, 10000):
             test(n)
-        return

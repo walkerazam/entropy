@@ -17,12 +17,8 @@ def entropy(ps):
     """
     if any([(p < 0.0) or (p > 1.0) for p in ps]):
         raise ValueError("At least one input is out of range [0...1]")
-    else:
-        pass
     if not np.isclose(1, np.sum(ps), atol=1e-08):
         raise ValueError("The list of input probabilities does not sum to 1")
-    else:
-        pass
     items = ps * np.log2(ps)
     new_items = []
     for item in items:
