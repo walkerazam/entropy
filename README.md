@@ -1,5 +1,6 @@
 # entropy
 ## An example of directory structure for testing
+[![Python Package using Conda](https://github.com/walkerazam/entropy/actions/workflows/python-package-conda.yml/badge.svg)](https://github.com/walkerazam/entropy/actions/workflows/python-package-conda.yml)
 
 You can run the tests in the `entropy/tests` directory with:
 `python -m unittest discover -s entropy`
